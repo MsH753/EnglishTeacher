@@ -35,6 +35,7 @@ let [currentCard,setCurrentCard]=React.useState("g")
 //dataBdEnd
 // logict dnd
 function dragStartHandler(e: React.DragEvent<HTMLDivElement>,card: string){
+  
   /*currentCard.id=card.id
   currentCard.order=card.order
   currentCard.Text=card.Text*/
@@ -69,7 +70,7 @@ function dropHandler(e: React.DragEvent<HTMLDivElement>,card: string){
 
   setTextCard(texstCard)
   
-  let rezulttext=cardList[1].otvetText.split(" ")
+  let rezulttext=cardList[0].otvetText.split(" ")
   console.log(rezulttext, texstCard)
   if(JSON.stringify(rezulttext)===JSON.stringify(texstCard)){
     alert("Победа")
@@ -78,7 +79,7 @@ function dropHandler(e: React.DragEvent<HTMLDivElement>,card: string){
 function shuffle(){
   wordCheck=Math.floor(Math.random() * cardList.length) + 0
 	let j, temp;
-  let arr=cardList[1].otvetText.split(" ")
+  let arr=cardList[0].otvetText.split(" ")
 	for(var i = arr.length - 1; i > 0; i--){
 		j = Math.floor(Math.random()*(i + 1));
 		temp = arr[j];
@@ -108,7 +109,7 @@ let [texstCard,setTextCard]=React.useState(shuffle())
                     {card}
                       </div>)})}
       <div>
-        {cardList[1].Text}
+        {cardList[0].Text}
       </div>
       <div><button onClick={()=>setTextCard(shuffle())}>Сгенерировать другое слово</button></div>
     </div>
